@@ -1,0 +1,43 @@
+networks:
+  web-server:
+    external: true
+
+services:
+  synapse:
+    container_name: synapse
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      - SYNAPSE_CONFIG_PATH=/data/homeserver.yaml
+      - UID=1000
+      - GID=1000
+    volumes:
+      - ./synapse:/data
+      - ./.env:/data/.env:ro
+    depends_on:
+      - synapse-db
+    ports:
+      - 8008:8008
+      - 8448:8448
+    networks:
+      - web-server
+        
+  synapse-db:
+    image: docker.io/postgres:15-alpine
+    container_name: synapse-db
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      - POSTGRES_USER=${DB_USERNAME}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_DATABASE_NAME}
+      - POSTGRES_INITDB_ARGS=--encoding=UTF-8 --lc-collate=C --lc-ctype=C
+    volumes:
+      - ./postgres:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    networks:
+      - web-server

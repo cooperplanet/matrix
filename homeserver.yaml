@@ -22,12 +22,25 @@ database:
 
 log_config: "/data/matrix.ninbura.com.log.config"
 media_store_path: /data/media_store
-url_preview_enabled: true
 registration_shared_secret: ${REGISTRATION_SHARED_SECRET}
 report_stats: false
 macaroon_secret_key: ${MACAROON_SECRET_KEY} 
 form_secret: ${FORM_SECRET}
 signing_key_path: "/data/matrix.ninbura.com.signing.key"
+max_upload_size: 107374182400
+
+url_preview_enabled: true
+url_preview_ip_range_blacklist:
+  - '127.0.0.0/8'      # Loopback addresses
+  - '10.0.0.0/8'       # Private IP ranges
+  - '172.16.0.0/12'    # Private IP ranges
+  - '192.168.0.0/16'   # Private IP ranges
+  - '100.64.0.0/10'    # Shared Address Space (RFC 6598)
+  - '169.254.0.0/16'   # Link-local addresses
+  - '::1/128'          # IPv6 loopback address
+  - 'fe80::/10'        # IPv6 link-local addresses
+  - 'fc00::/7'         # IPv6 unique local addresses
+
 trusted_key_servers:
   - server_name: "matrix.org"
 
@@ -46,20 +59,6 @@ retention:
 encryption_enabled_by_default_for_room_type: all
 block_non_admin_invites: false
 
-modules:
-  - module: synapse_user_restrictions.UserRestrictionsModule
-    config:
-      rules:
-        - match: "@ninbura:matrix.ninbura.com"
-          allow: [invite, create_room]
-        - match: "@jiggyboo:matrix.ninbura.com"
-          allow: [invite, create_room]
-        - match: "@gloogo:matrix.ninbura.com"
-          allow: [invite, create_room]
-        - match: "@pezneck:matrix.ninbura.com"
-          allow: [invite, create_room]
-      default_deny: [invite, create_room]
-
 email:
   smtp_host: ${SMTP_SERVER}
   smtp_port: ${SMTP_PORT}
@@ -69,3 +68,22 @@ email:
   notif_from: "Matrix <matrix@ninbura.com>"
   enable_notifs: true
   enable_password_resets: true
+
+registrations_require_3pid:
+  - email
+
+disable_msisdn_registration: true
+ 
+modules:
+  - module: synapse_user_restrictions.UserRestrictionsModule
+    config:
+      rules:
+        - match: "@ninbura:matrix.ninbura.com"
+          allow: [create_room]
+        - match: "@jiggyboo:matrix.ninbura.com"
+          allow: [create_room]
+        - match: "@gloogo:matrix.ninbura.com"
+          allow: [create_room]
+        - match: "@pezneck:matrix.ninbura.com"
+          allow: [create_room]
+      default_deny: [create_room]

@@ -19,8 +19,10 @@ database:
    host: synapse-db
    cp_min: 5
    cp_max: 10
+
 log_config: "/data/matrix.ninbura.com.log.config"
 media_store_path: /data/media_store
+url_preview_enabled: true
 registration_shared_secret: ${REGISTRATION_SHARED_SECRET}
 report_stats: false
 macaroon_secret_key: ${MACAROON_SECRET_KEY} 

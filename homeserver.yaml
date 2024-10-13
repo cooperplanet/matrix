@@ -73,17 +73,19 @@ registrations_require_3pid:
   - email
 
 disable_msisdn_registration: true
- 
+
 modules:
   - module: synapse_user_restrictions.UserRestrictionsModule
     config:
       rules:
         - match: "@ninbura:matrix.ninbura.com"
-          allow: [create_room]
+          allow: [invite, create_room]
         - match: "@jiggyboo:matrix.ninbura.com"
-          allow: [create_room]
+          allow: [invite, create_room]
         - match: "@gloogo:matrix.ninbura.com"
-          allow: [create_room]
+          allow: [invite, create_room]
         - match: "@pezneck:matrix.ninbura.com"
-          allow: [create_room]
-      default_deny: [create_room]
+          allow: [invite, create_room]
+        - match: "@big_rubber:matrix.ninbura.com"
+          allow: [invite, create_room]
+      default_deny: [invite, create_room]

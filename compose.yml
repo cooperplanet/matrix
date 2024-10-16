@@ -16,6 +16,7 @@ services:
     volumes:
       - ./synapse:/data
       - ./.env:/data/.env:ro
+      - ./log.config:/data/log.config:ro
     depends_on:
       - synapse-db
     ports:

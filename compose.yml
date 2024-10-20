@@ -23,8 +23,8 @@ services:
       - 8008:8008
       - 8448:8448
     networks:
-      - web-server
-        
+      web-server:
+        ipv4_address: 10.99.99.4
   synapse-db:
     image: docker.io/postgres:15-alpine
     container_name: synapse-db
@@ -41,4 +41,5 @@ services:
     ports:
       - 5432:5432
     networks:
-      - web-server
+      web-server:
+        ipv4_address: 10.99.99.230

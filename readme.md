@@ -83,7 +83,7 @@ It is highly suggested that you use the Element X app as it supports E2EE (end-t
 2. On the Element X mobile app tap "Sign in with QR code", and then "Ready to scan". 
 3. Grant the app camera access if neccessary, and scan the QR code.
 4. enter the 2-digit code displaying on your phone into the input boxes in the Element desktop/web app
-5. on the "Allow access to your account?" page in the Element desktop/web app review the details & click Continue
+5. on the "Allow access to your account?" page in the Element desktop/web app review the details & click "Continue"
 ### sign in manually
 1. tap the "Sign in manually" button and then "Change account provider"
 2. enter "matrix.ninbura.com" into the text box & tap "Continue" twice

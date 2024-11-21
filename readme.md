@@ -10,7 +10,7 @@
 5. fill out the form & click "Continue"
 6. enter the code sent to your email & follow redirection prompts
 7. Once in the web-app, click your user portrait in the top left, and then "Security & Privacy".
-8. in the "Secure Backup" section click the "Set Up" button
+8. in the "Secure Backup" section click the "Set Up" button (security key)
 9. choose "Generate a Security Key" & click "Continue"
 10. click "Download" or "Copy" & store the key somewhere safe/redundant (DO NOT LOSE THIS)
 11. click "Continue" and then "Done"

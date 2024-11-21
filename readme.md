@@ -58,8 +58,7 @@ Use `MAS_CLIENT_ID` & `MAS_CLIENT_SECRET` to authenticate, check the "urn:mas:ad
 https://mauth.ninbura.com/api/doc/
 ```
 
-# account creation & logging in
-## create account
+# account registration
 ### preface
 It is reccomended that you perform account registration on a desktop computer, but the process for mobile should be very similar.
 ### steps
@@ -74,24 +73,3 @@ It is reccomended that you perform account registration on a desktop computer, b
 9. choose "Generate a Security Key" & click "Continue"
 10. click "Download" or "Copy" & store the key somewhere safe/redundant (DO NOT LOSE THIS)
 11. click "Continue" and then "Done"
-
-## login on mobile (Element X)
-### preface
-It is highly suggested that you use the Element X app as it supports E2EE (end-to-end encryption) push notifications.
-### with QR (easiest)
-1. on the element web app or the desktop app click your user portrait and then "Link new device"
-2. On the Element X mobile app tap "Sign in with QR code", and then "Ready to scan". 
-3. Grant the app camera access if neccessary, and scan the QR code.
-4. enter the 2-digit code displaying on your phone into the input boxes in the Element desktop/web app
-5. on the "Allow access to your account?" page in the Element desktop/web app review the details & click "Continue"
-### sign in manually
-1. tap the "Sign in manually" button and then "Change account provider"
-2. enter "matrix.ninbura.com" into the text box & tap "Continue" twice
-3. enter your Username & Password and tap "Continue" twice
-4. on the "Confirm your identity" choose one of the following
-    - use another device
-        1. tap "Start verification"
-        2. click or tap "Verify Session" on your second device and then tap "Start" on your phone
-        3. Verify that the on screen emoji match on both devices, and then click/tap "They match" on each respective device.
-    - use recovery key
-        1. enter the security key you backed up earlier into the text box and tap "Continue"

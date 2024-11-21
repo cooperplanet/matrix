@@ -14,7 +14,7 @@ http:
     - name: web
       binds:
         - address: localhost
-          port: 8448
+          port: 8009
       resources:
         - name: discovery
         - name: human

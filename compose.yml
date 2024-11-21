@@ -23,7 +23,7 @@ services:
         condition: service_started
 
   matrix-authentication-service:
-    image: ghcr.io/element-hq/matrix-authentication-service:latest
+    image: ghcr.io/element-hq/matrix-authentication-service
     container_name: matrix-authentication-service
     user: 0:0
     restart: unless-stopped
@@ -31,6 +31,8 @@ services:
       MAS_CONFIG: /mas/config.yaml
     volumes:
       - ./mas:/mas
+      - ./mas-templates/app.html:/usr/local/share/mas-cli/templates/app.html
+      - ./mas-templates/base.html:/usr/local/share/mas-cli/templates/base.html
     ports:
       - 8448:8448
     depends_on:

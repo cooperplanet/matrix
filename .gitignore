@@ -4,3 +4,4 @@ mas/
 postgres/
 temp.txt
 *.pem
+exported-mas-templates/

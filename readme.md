@@ -36,3 +36,17 @@ docker exec -it matrix-authentication-service mas-cli config sync --prune
 ```bash
 docker exec -it matrix-authentication-service mas-cli config sync --prune --dryrun
 ```
+
+# generate matrix authentication service templates locally
+```bash
+mkdir exported-mas-templates
+```
+```bash
+docker create --name temp-mas ghcr.io/element-hq/matrix-authentication-service:latest
+```
+```bash
+docker cp temp-mas:/usr/local/share/mas-cli/templates ./exported-mas-templates
+```
+```bash
+docker rm temp-mas
+```

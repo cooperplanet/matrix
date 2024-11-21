@@ -33,10 +33,10 @@ account:
   password_registration_enabled: true
   password_recovery_enabled: true
 
-captcha:
-  service: hcaptcha
-  site_key: ${HCAP_SITE_KEY}
-  secret_key: ${HCAP_SECRET_KEY}
+# captcha:
+#   service: hcaptcha
+#   site_key: ${HCAP_SITE_KEY}
+#   secret_key: ${HCAP_SECRET_KEY}
 
 secrets:
   encryption: ${MAS_SECRETS_ENCRYPTION}
@@ -53,3 +53,6 @@ email:
   port: ${SMTP_PORT}
   username: ${SMTP_USERNAME}
   password: ${SMTP_PASSWORD}
+
+# templates:
+#   path: /mas

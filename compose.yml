@@ -35,6 +35,7 @@ services:
       - ./mas-templates/base.html:/usr/local/share/mas-cli/templates/base.html
     ports:
       - 8448:8448
+      - 8449:8449
     depends_on:
       synapse-db:
         condition: service_started

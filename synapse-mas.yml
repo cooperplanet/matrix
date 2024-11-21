@@ -22,6 +22,7 @@ http:
         - name: compat
         - name: graphql
         - name: assets
+        - name: adminapi
 
 database:
   host: synapse-db
@@ -54,5 +55,7 @@ email:
   username: ${SMTP_USERNAME}
   password: ${SMTP_PASSWORD}
 
-# templates:
-#   path: /mas
+policy:
+  data:
+    admin_clients:
+      - ${MAS_CLIENT_ID}

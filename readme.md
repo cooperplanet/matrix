@@ -52,7 +52,7 @@ docker rm temp-mas
 ```
 
 # [api](https://mauth.ninbura.com/api/doc/)
-Use MAS_CLIENT_ID & MAS_CLIENT_SECRET to authenticate, check the "urn:mas:admin Grant access to the admin API" box.
+Use `MAS_CLIENT_ID` & `MAS_CLIENT_SECRET` to authenticate, check the "urn:mas:admin Grant access to the admin API" box.
 
 ```
 https://mauth.ninbura.com/api/doc/

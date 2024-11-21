@@ -77,7 +77,7 @@ It is reccomended that you perform account registration on a desktop computer, b
 
 ## login on mobile (Element X)
 ### preface
-It is highly suggested that you use the Element X app as it supports E2EE push notifications.
+It is highly suggested that you use the Element X app as it supports E2EE (end-to-end encryption) push notifications.
 ### with QR (easiest)
 1. on the element web app or the desktop app click your user portrait and then "Link new device"
 2. On the Element X mobile app tap "Sign in with QR code", and then "Ready to scan". 

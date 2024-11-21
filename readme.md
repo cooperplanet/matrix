@@ -61,7 +61,7 @@ https://mauth.ninbura.com/api/doc/
 # account registration
 ### preface
 - It is reccomended that you perform account registration on a desktop computer, but the process for mobile should be very similar.
-- On mobile I reccomend using Element Messenger over using Element X for now, Element Messenger is more stable and has many more features (threads, channel discovery, a lot more settings, etc).
+- On mobile I recommend using Element Messenger over using Element X for now, Element Messenger is more stable and has many more features (threads, channel discovery, a lot more settings, etc).
 ### steps
 1. visit https://app.element.io & click "Login" (don't click "Create account")
 2. click "edit" under "Homeserver" to the right of "matrix.org"

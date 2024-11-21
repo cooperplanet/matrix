@@ -49,7 +49,7 @@ experimental_features:
     client_secret: ${MAS_CLIENT_SECRET}
     admin_token: ${MAS_MATRIX_SECRET}
     account_management_url: https://mauth.ninbura.com/account
-  msc4108_enabled: true # Enable QR code login (MSC4108)
+  msc4108_enabled: true # Enable QR code login on Element X
 
 url_preview_enabled: true
 url_preview_ip_range_blacklist:

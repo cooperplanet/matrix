@@ -3,3 +3,4 @@ synapse/
 mas/
 postgres/
 temp.txt
+*.pem

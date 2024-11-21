@@ -1,3 +1,5 @@
 .env
 synapse/
+mas/
 postgres/
+temp.txt

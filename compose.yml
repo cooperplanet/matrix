@@ -1,45 +1,62 @@
-networks:
-  web-server:
-    external: true
-
 services:
   synapse:
     container_name: synapse
     build:
-      context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.synapse
     restart: unless-stopped
     environment:
-      - SYNAPSE_CONFIG_PATH=/data/homeserver.yaml
-      - UID=1000
-      - GID=1000
+      SYNAPSE_CONFIG_PATH: /data/homeserver.yaml
+      UID: 1000
+      GID: 1000
     volumes:
       - ./synapse:/data
       - ./.env:/data/.env:ro
       - ./log.config:/data/log.config:ro
-    depends_on:
-      - synapse-db
     ports:
       - 8008:8008
+    depends_on:
+      synapse-db:
+        condition: service_started
+      synapse-substitute:
+        condition: service_completed_successfully
+      matrix-authentication-service:
+        condition: service_started
+
+  matrix-authentication-service:
+    image: ghcr.io/element-hq/matrix-authentication-service:latest
+    container_name: matrix-authentication-service
+    user: 0:0
+    restart: unless-stopped
+    environment:
+      MAS_CONFIG: /mas/config.yaml
+    volumes:
+      - ./mas:/mas
+    ports:
       - 8448:8448
-    networks:
-      web-server:
-        ipv4_address: 10.99.99.4
+    depends_on:
+      synapse-db:
+        condition: service_started
+      synapse-substitute:
+        condition: service_completed_successfully
+
   synapse-db:
     image: docker.io/postgres:15-alpine
     container_name: synapse-db
     restart: unless-stopped
-    env_file:
-      - .env
     environment:
-      - POSTGRES_USER=${DB_USERNAME}
-      - POSTGRES_PASSWORD=${DB_PASSWORD}
-      - POSTGRES_DB=${DB_DATABASE_NAME}
-      - POSTGRES_INITDB_ARGS=--encoding=UTF-8 --lc-collate=C --lc-ctype=C
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_MATRIX_DB}
+      POSTGRES_INITDB_ARGS: "--encoding=UTF-8 --lc-collate=C --lc-ctype=C"
     volumes:
-      - ./postgres:/var/lib/postgresql/data
+      - ./postgres:/var/lib/postgresql/data/
     ports:
       - 5432:5432
-    networks:
-      web-server:
-        ipv4_address: 10.99.99.230
+
+  synapse-substitute:
+      container_name: synapse-substitute
+      build:
+        dockerfile: Dockerfile.substitute
+      volumes:
+        - ./synapse:/data
+        - ./mas:/mas

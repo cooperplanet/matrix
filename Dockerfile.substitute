@@ -1,0 +1,16 @@
+FROM alpine
+
+RUN apk add --no-cache gettext
+RUN mkdir -p /templates
+RUN mkdir -p /data
+RUN mkdir -p /mas
+
+COPY .env /templates/.env
+COPY synapse.yml /templates/homeserver.yaml
+COPY synapse-mas.yml /templates/config.yaml
+COPY key1.pem /templates/key1.pem
+COPY entrypoint.sh /entrypoint.sh
+
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]

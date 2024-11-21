@@ -1,0 +1,55 @@
+matrix:
+  homeserver: matrix.ninbura.com
+  endpoint: http://synapse:8008
+  secret: ${MAS_MATRIX_SECRET}
+
+clients:
+  - client_id: ${MAS_CLIENT_ID}
+    client_auth_method: client_secret_basic
+    client_secret: ${MAS_CLIENT_SECRET}
+
+http:
+  public_base: https://mauth.ninbura.com
+  listeners:
+    - name: web
+      binds:
+        - address: localhost
+          port: 8448
+      resources:
+        - name: discovery
+        - name: human
+        - name: oauth
+        - name: compat
+        - name: graphql
+        - name: assets
+
+database:
+  host: synapse-db
+  username: ${POSTGRES_USER}
+  password: ${POSTGRES_PASSWORD}
+  database: ${POSTGRES_MAS_DB}
+
+account:
+  password_registration_enabled: true
+  password_recovery_enabled: true
+
+captcha:
+  service: hcaptcha
+  site_key: ${HCAP_SITE_KEY}
+  secret_key: ${HCAP_SECRET_KEY}
+
+secrets:
+  encryption: ${MAS_SECRETS_ENCRYPTION}
+  keys:
+    - kid: key1
+      key_file: /mas/key1.pem
+
+email:
+  from: ${SMTP_USERNAME}
+  reply_to: ${SMTP_USERNAME}
+  transport: smtp
+  mode: starttls
+  hostname: ${SMTP_SERVER}
+  port: ${SMTP_PORT}
+  username: ${SMTP_USERNAME}
+  password: ${SMTP_PASSWORD}

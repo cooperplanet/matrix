@@ -1,0 +1,123 @@
+server_name: matrix.ninbura.com
+pid_file: /data/homeserver.pid
+
+listeners:
+  - port: 8008
+    tls: false
+    type: http
+    x_forwarded: true
+    resources:
+      - names: [client, federation]
+        compress: false
+
+database:
+  name: psycopg2
+  args:
+    user: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
+    database: ${POSTGRES_MATRIX_DB}
+    host: synapse-db
+    cp_min: 5
+    cp_max: 10
+
+log_config: /data/log.config
+media_store_path: /data/media_store
+registration_shared_secret: ${REGISTRATION_SHARED_SECRET}
+report_stats: false
+macaroon_secret_key: ${MACAROON_SECRET_KEY}
+form_secret: ${FORM_SECRET}
+signing_key_path: /data/matrix.ninbura.com.signing.key
+max_upload_size: 107374182400
+public_baseurl: https://matrix.ninbura.com/
+
+presence:
+  enabled: true
+
+experimental_features:
+  msc3861:
+    enabled: true
+    issuer: https://mauth.ninbura.com/
+    client_id: ${MAS_CLIENT_ID}
+    client_auth_method: client_secret_basic
+    client_secret: ${MAS_CLIENT_SECRET}
+    admin_token: ${MAS_MATRIX_SECRET}
+    account_management_url: https://mauth.ninbura.com/account
+  msc4108_enabled: true # Enable QR code login (MSC4108)
+
+url_preview_enabled: true
+url_preview_ip_range_blacklist:
+  - 127.0.0.0/8 # Loopback addresses
+  - 10.0.0.0/8 # Private IP ranges
+  - 172.16.0.0/12 # Private IP ranges
+  - 192.168.0.0/16 # Private IP ranges
+  - 100.64.0.0/10 # Shared Address Space (RFC 6598)
+  - 169.254.0.0/16 # Link-local addresses
+  - ::1/128 # IPv6 loopback address
+  - fe80::/10 # IPv6 link-local addresses
+  - fc00::/7 # IPv6 unique local addresses
+
+trusted_key_servers:
+  - server_name: "matrix.org"
+
+retention:
+  enabled: true
+  default_policy:
+    min_lifetime: 7d
+    max_lifetime: 7d
+  purge_jobs:
+    - shortest_max_lifetime: 7d
+      longest_max_lifetime: 7d
+      interval: 12h
+
+media_storage:
+  retention:
+    enabled: true
+    min_lifetime: 7d
+    max_lifetime: 7d
+    purge_jobs:
+      - interval: 12h
+
+encryption_enabled_by_default_for_room_type: all
+block_non_admin_invites: false
+
+loggers:
+  synapse.handlers.retention: DEBUG
+  synapse:
+    level: DEBUG
+  synapse.handlers.sliding_sync: DEBUG
+
+email:
+  smtp_host: ${SMTP_SERVER}
+  smtp_port: ${SMTP_PORT}
+  smtp_user: ${SMTP_USERNAME}
+  smtp_pass: ${SMTP_TOKEN}
+  require_transport_security: true
+  notif_from: matrix@ninbura.com
+  enable_notifs: false
+  enable_password_resets: true
+
+modules:
+  - module: synapse_user_restrictions.UserRestrictionsModule
+    config:
+      rules:
+        - match: "@behn:matrix.ninbura.com"
+          allow: [invite, create_room]
+        - match: "@big_rubber:matrix.ninbura.com"
+          allow: [invite, create_room]
+        - match: "@gloogo:matrix.ninbura.com"
+          allow: [invite, create_room]
+        - match: "@janmorgen:matrix.ninbura.com"
+          allow: [invite, create_room]
+        - match: "@jiggyboo:matrix.ninbura.com"
+          allow: [invite, create_room]
+        - match: "@junk:matrix.ninbura.com"
+          allow: [invite, create_room]
+        - match: "@kryllo:matrix.ninbura.com"
+          allow: [invite, create_room]
+        - match: "@natex338:matrix.ninbura.com"
+          allow: [invite, create_room]
+        - match: "@ninbura:matrix.ninbura.com"
+          allow: [invite, create_room]
+        - match: "@pezneck:matrix.ninbura.com"
+          allow: [invite, create_room]
+      default_deny: [invite, create_room]

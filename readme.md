@@ -3,7 +3,7 @@
 - It is reccomended that you perform account registration on a desktop computer, but the process for mobile should be very similar.
 - On mobile **I recommend using Element Messenger** over using Element X for now, Element Messenger is more stable and has significantly more features (threads, channel discovery, additional settings, etc).
 ### steps
-1. visit https://app.element.io & click "Login" (don't click "Create account")
+1. visit https://app.element.io & click "Sign in" (don't click "Create account")
 2. click "edit" under "Homeserver" to the right of "matrix.org"
 3. enter "matrix.ninbura.com" into the text box & click "Continue" ("Continue with SSO" on iOS)
 4. click "Create Account" at the bottom of the page

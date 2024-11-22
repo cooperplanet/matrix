@@ -107,9 +107,9 @@ modules:
   - module: synapse_user_restrictions.UserRestrictionsModule
     config:
       rules:
-        - match: "@behn:matrix.ninbura.com"
+        - match: "@bsqrd:matrix.ninbura.com"
           allow: [invite, create_room]
-        - match: "@big_rubber:matrix.ninbura.com"
+        - match: "@bigger_rubber:matrix.ninbura.com"
           allow: [invite, create_room]
         - match: "@gloogo:matrix.ninbura.com"
           allow: [invite, create_room]

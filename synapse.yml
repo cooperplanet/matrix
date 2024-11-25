@@ -9,7 +9,7 @@ listeners:
     resources:
       - names: [client]
         compress: false
-  - port: 8447
+  - port: 8448
     tls: false
     type: http
     x_forwarded: true

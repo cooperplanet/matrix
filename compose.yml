@@ -1,3 +1,7 @@
+networks:
+  web-server:
+    external: true
+
 services:
   synapse:
     container_name: synapse
@@ -12,9 +16,14 @@ services:
       - ./synapse:/data
       - ./.env:/data/.env:ro
       - ./log.config:/data/log.config:ro
-    ports:
-      - 8008:8008
-      - 8447:8447
+    networks:
+      default:
+      web-server:
+        ipv4_address: 12.0.5.20
+    # ports:
+    #   - 8008:8008
+    #   - 8448 # federation is handled by nginx on 8448
+
     depends_on:
       synapse-db:
         condition: service_started
@@ -34,8 +43,12 @@ services:
       - ./mas:/mas
       - ./mas-templates/app.html:/usr/local/share/mas-cli/templates/app.html
       - ./mas-templates/base.html:/usr/local/share/mas-cli/templates/base.html
-    ports:
-      - 8009:8009
+    networks:
+      default:
+      web-server:
+        ipv4_address: 12.0.5.40
+    # ports:
+    #   - 8009:8009
     depends_on:
       synapse-db:
         condition: service_started
@@ -53,8 +66,8 @@ services:
       POSTGRES_INITDB_ARGS: "--encoding=UTF-8 --lc-collate=C --lc-ctype=C"
     volumes:
       - ./postgres:/var/lib/postgresql/data/
-    ports:
-      - 5432:5432
+    # ports:
+    #   - 5432:5432
 
   synapse-substitute:
       container_name: synapse-substitute

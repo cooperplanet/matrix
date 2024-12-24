@@ -14,3 +14,4 @@
 9. choose "Generate a Security Key" & click "Continue"
 10. click "Download" or "Copy" & store the key somewhere safe/redundant (DO NOT LOSE THIS)
 11. click "Continue" and then "Done"
+12. login on mobile & use the desktop session to verify your account (Element Messenger - [iOS](https://apps.apple.com/us/app/element-messenger/id1083446067) | [Android](https://play.google.com/store/apps/details?id=im.vector.app&hl=en_US&pli=1))

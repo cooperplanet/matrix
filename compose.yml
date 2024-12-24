@@ -1,6 +1,8 @@
 networks:
-  web-server:
-    external: true
+  default:
+    ipam:
+      config:
+        - subnet: 10.42.5.0/24
 
 services:
   synapse:
@@ -18,7 +20,6 @@ services:
       - ./log.config:/data/log.config:ro
     networks:
       default:
-      web-server:
         ipv4_address: 10.42.5.20
     # ports:
     #   - 8008:8008
@@ -45,7 +46,6 @@ services:
       - ./mas-templates/base.html:/usr/local/share/mas-cli/templates/base.html
     networks:
       default:
-      web-server:
         ipv4_address: 10.42.5.40
     # ports:
     #   - 8009:8009

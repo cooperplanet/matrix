@@ -1,5 +1,5 @@
 matrix:
-  homeserver: matrix.ninbura.com
+  homeserver: matrix.cooperplanet.com
   endpoint: http://synapse:8008
   secret: ${MAS_MATRIX_SECRET}
 
@@ -9,7 +9,7 @@ clients:
     client_secret: ${MAS_CLIENT_SECRET}
 
 http:
-  public_base: https://mauth.ninbura.com
+  public_base: https://mauth.cooperplanet.com
   listeners:
     - name: web
       binds:

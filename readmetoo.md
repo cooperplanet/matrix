@@ -52,8 +52,8 @@ docker cp temp-mas:/usr/local/share/mas-cli/templates ./exported-mas-templates
 docker rm temp-mas
 ```
 
-# [api](https://mauth.ninbura.com/api/doc/)
+# [api](https://mauth.cooperplanet.com/api/doc/)
 Use `MAS_CLIENT_ID` & `MAS_CLIENT_SECRET` to authenticate, check the "urn:mas:admin Grant access to the admin API" box.
 ```
-https://mauth.ninbura.com/api/doc/
+https://mauth.cooperplanet.com/api/doc/
 ```

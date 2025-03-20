@@ -5,7 +5,7 @@
 ### steps
 1. visit https://app.element.io & click "Sign in" (don't click "Create account")
 2. click "edit" under "Homeserver" to the right of "matrix.org"
-3. enter "matrix.ninbura.com" into the text box & click "Continue" ("Continue with SSO" on iOS)
+3. enter "matrix.cooperplanet.com" into the text box & click "Continue" ("Continue with SSO" on iOS)
 4. click "Create Account" at the bottom of the page
 5. fill out the form & click "Continue"
 6. enter the code sent to your email & follow redirection prompts
